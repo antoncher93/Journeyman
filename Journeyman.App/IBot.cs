@@ -17,5 +17,6 @@ namespace Journeyman.App
         Task HandleAsync(Update update);
         Task AddChatAgreementAsync(Chat chat, string text);
         Task HandleChatMemberStatusAsync(User user, long chatId);
+        Task<bool> CanExecuteCommandAsync(User from, Chat chat);
     }
 }

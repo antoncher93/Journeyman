@@ -22,7 +22,7 @@ namespace Journeyman.App.Handlers
 
         public static UpdateHandler Create(IBot bot, IServiceProvider serviceProvider)
         {
-            var head = new BotCommandHandler(serviceProvider);
+            var head = new BotCommandHandler(serviceProvider, bot);
             head.SetNext(new ChatMemberStatusHandler(bot))
                 .SetNext(new AcceptAgreementCallbackHandler(bot))
                 .SetNext(new NewChatMembersHandler(bot));

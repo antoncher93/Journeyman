@@ -1,3 +1,4 @@
+using Journeyman.App.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +22,12 @@ namespace Journeyman.App
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureLogging(loggingBuilder =>
+                    {
+                        loggingBuilder
+                            //.AddConsole()
+                            .AddFile("bot.log");
+                    });
                 });
     }
 }

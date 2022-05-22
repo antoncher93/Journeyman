@@ -1,4 +1,5 @@
 ﻿using Journeyman.App.BotCommands;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,12 @@ namespace Journeyman.App.Handlers
     {
         private readonly IDictionary<string, Type> _commandDictionary = new Dictionary<string, Type>();
         private readonly IServiceProvider _serviceProvider;
+        private readonly IBot _bot;
 
-        public BotCommandHandler(IServiceProvider serviceProvider)
+        public BotCommandHandler(IServiceProvider serviceProvider, IBot bot)
         {
             _serviceProvider = serviceProvider;
-
+            _bot = bot;
             _commandDictionary.Add("/warn", typeof(WarnUserCommand));
             _commandDictionary.Add("/ban", typeof(BanUserCommand));
             _commandDictionary.Add("/start", typeof(StartBotCommand));
@@ -34,6 +36,11 @@ namespace Journeyman.App.Handlers
                 {
                     if (msg.Entities[i].Type == MessageEntityType.BotCommand)
                     {
+                        bool canExecute = await _bot.CanExecuteCommandAsync(msg.From, msg.Chat);
+
+                        if(!canExecute)
+                            return;
+
                         var commandName = msg.EntityValues.ElementAt(i);
                         if(_commandDictionary.ContainsKey(commandName))
                         {
