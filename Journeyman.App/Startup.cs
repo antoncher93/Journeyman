@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Telegram.Bot;
 using Journeyman.App.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Journeyman.App.Logging;
 using Journeyman.App.BotCommands;
 
@@ -42,10 +42,8 @@ namespace Journeyman.App
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IBot bot, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IBot bot)
         {
-            loggerFactory.AddFile("bot.log");
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -60,10 +58,7 @@ namespace Journeyman.App
 
             app.UseRouting();
 
-
-            //app.UseMiddleware<LoggerMiddleware>();
             app.UseAuthentication();
-            //app.UseAuthorization();
 
             bot.Start(string.Format(Configuration["Url"], "api/message/update"));
 

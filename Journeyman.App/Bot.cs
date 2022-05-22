@@ -229,5 +229,11 @@ namespace Journeyman.App
             }
             await _db.SaveChangesAsync();
         }
+
+        public async Task<bool> CanExecuteCommandAsync(User from, Chat chat)
+        {
+            var member = await _client.GetChatMemberAsync(chat.Id, from.Id);
+            return member.Status == ChatMemberStatus.Creator || member.Status == ChatMemberStatus.Administrator;
+        }
     }
 }
