@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journeyman.Services", "Journeyman.Services\Journeyman.Services.csproj", "{7F0B7278-E4D3-47A4-9F2D-F25D526B7592}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Journeyman.App", "Journeyman.App\Journeyman.App.csproj", "{68C2A465-A56A-42B2-BC00-7BCE60C7F918}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journeyman.App", "Journeyman.App\Journeyman.App.csproj", "{68C2A465-A56A-42B2-BC00-7BCE60C7F918}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{465F386C-9DA2-4AF2-BC57-B32FF0B3366B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Journeyman.Persons.Micro", "Journeyman.Persons.Micro\Journeyman.Persons.Micro.csproj", "{8AB2B9AC-C089-4CB6-A259-11E19753C083}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{68C2A465-A56A-42B2-BC00-7BCE60C7F918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68C2A465-A56A-42B2-BC00-7BCE60C7F918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68C2A465-A56A-42B2-BC00-7BCE60C7F918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB2B9AC-C089-4CB6-A259-11E19753C083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB2B9AC-C089-4CB6-A259-11E19753C083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB2B9AC-C089-4CB6-A259-11E19753C083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB2B9AC-C089-4CB6-A259-11E19753C083}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8AB2B9AC-C089-4CB6-A259-11E19753C083} = {465F386C-9DA2-4AF2-BC57-B32FF0B3366B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA373496-22AE-4FCE-A68C-0769955F96BD}
