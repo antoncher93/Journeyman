@@ -1,6 +1,7 @@
 using Journeyman.Persons.Micro.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +44,10 @@ namespace Journeyman.Persons.Micro
             }
 
             app.UseHttpsRedirection();
+
+            //app.Run(async (c) => await c.Response.WriteAsync("Hello World"));
+
+            //return;
 
             app.UseRouting();
 

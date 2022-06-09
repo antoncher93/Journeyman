@@ -10,10 +10,11 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["Journeyman.Persons.Micro/Journeyman.Persons.Micro.csproj", "Journeyman.Persons.Micro/"]
-RUN dotnet restore "Journeyman.Persons.Micro/Journeyman.Persons.Micro.csproj"
+USER Administrator
+COPY Journeyman.Persons.Micro.csproj Journeyman.Persons.Micro.csproj
+RUN dotnet restore Journeyman.Persons.Micro.csproj
 COPY . .
-WORKDIR "/src/Journeyman.Persons.Micro"
+WORKDIR "/src"
 RUN dotnet build "Journeyman.Persons.Micro.csproj" -c Release -o /app/build
 
 FROM build AS publish
