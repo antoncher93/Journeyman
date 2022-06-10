@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journeyman.Chats.Micro", "J
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message Broker", "Message Broker", "{C0B3026F-0278-483A-A112-43F8A6DCD439}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBrocker.Kafka", "MessageBrocker.Kafka\MessageBrocker.Kafka.csproj", "{52877963-9040-41C3-B534-45ADBD9806B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBroker.Kafka", "MessageBrocker.Kafka\MessageBroker.Kafka.csproj", "{52877963-9040-41C3-B534-45ADBD9806B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
