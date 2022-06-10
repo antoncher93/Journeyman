@@ -9,7 +9,6 @@ namespace MessageBroker.Kafka
     public sealed class MessageBus : IDisposable
     {
         private readonly IProducer<Null, string> _producer;
-        private readonly IDictionary<string, string> _producerConfig;
         private readonly IDictionary<string, string> _consumerConfig;
         private IConsumer<Null, string> _consumer;
 
@@ -20,13 +19,13 @@ namespace MessageBroker.Kafka
 
         public MessageBus(string host)
         {
-            _producerConfig = new Dictionary<string, string>() { { "bootstrap.servers", host } };
+            var producerConfig = new Dictionary<string, string>() { { "bootstrap.servers", host } };
             _consumerConfig = new Dictionary<string, string>()
             {
                 { "group.id", "custom-group" },
                 { "bootstrap.servers", host }
             };
-            _producer = new ProducerBuilder<Null, string>(_producerConfig)
+            _producer = new ProducerBuilder<Null, string>(producerConfig)
                 .SetValueSerializer(new CustomerSerializer())
                 .Build();
         }
