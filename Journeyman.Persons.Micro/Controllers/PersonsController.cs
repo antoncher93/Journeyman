@@ -20,13 +20,9 @@ namespace Journeyman.Persons.Micro.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Person> Get()
+        public async Task<ActionResult<IEnumerable<Person>>> Get()
         {
-            return new Person[]
-            {
-                new Person() { ChatId = 1, Id = 1, IsBanned = false, UserId = 1, Warnings = 0 },
-                new Person() { ChatId = 2, Id = 2, IsBanned = false, UserId = 2, Warnings = 0 }
-            };
+            return await _db.Persons.ToListAsync();
         }
 
         [HttpGet("{userId}")]
